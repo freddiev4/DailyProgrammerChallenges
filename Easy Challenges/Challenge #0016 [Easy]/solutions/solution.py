@@ -1,3 +1,12 @@
+"""
+    Solution by: Ahmed Dhanani
+    
+    github: ahmeddhanani
+    
+    SO: http://stackoverflow.com/users/5538805/mrpycharm
+
+"""
+
 def ManipulateString(stringOne, stringTwo):
     
     index = len(stringOne) - 1
