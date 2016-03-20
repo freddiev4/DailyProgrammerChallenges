@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+"""
+    Solution by: Ahmed Dhanani
+    
+    github: ahmeddhanani
+    
+    SO: http://stackoverflow.com/users/5538805/mrpycharm
+
+"""
+
+>>>>>>> 61e5de87acb52715a1a432d5cdcb64f68e961b73
 import math
 
 def PrintTriangle(height):
@@ -30,4 +42,8 @@ def RightJustifiedTriangle(height):
         
 if __name__ == "__main__":
     PrintTriangle(5)
+<<<<<<< HEAD
     RightJustifiedTriangle(5)
+=======
+    RightJustifiedTriangle(5)
+>>>>>>> 61e5de87acb52715a1a432d5cdcb64f68e961b73
