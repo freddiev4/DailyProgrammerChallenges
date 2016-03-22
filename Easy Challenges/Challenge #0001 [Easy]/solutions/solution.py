@@ -1,47 +1,14 @@
-# Python 2. Currently learning python...
+def data_parser(data):
+	print 'Your name is {0}, you are {1} years old, and your username is {2}.'.format(data[0],data[1],data[2])
+	if 'y' in data[3]:
+		f = open('data_logger.txt','w')
+		f.write('Your name is {0}, you are {1} years old, and your username is {2}.'.format(data[0],data[1],data[2]))
 
-from os.path import exists 
+def data_retriever():
+	save_prompt = input('Save this data to disk, or no?\n>')
+	name_input = input('What\'s your name?\n>')
+	age_input = input('What\'s your age?\n>')
+	reddit_username_input = input('What\'s your reddit username?\n>')
+	return name_input,age_input,reddit_username_input,save_prompt
 
-print "Hello, what's your name?"
-name = raw_input('> ')
-print "How old are you?"
-age = raw_input('> ')
-print "What's your reddit username?"
-reddit_usr = raw_input('> ')
-
-info = """So your name is %s,\n
-you are %s years old\n
-and your reddit username is %s. """ % (name, age, reddit_usr)
-
-print info
-
-def store_info():
-	print "Do you want to store this information? Y/N"
-	store = raw_input('> ')
-
-	if store == 'N':
-		print "Alright, see you later!"
-	elif store == 'Y':
-		print "Please, type the name of the file. Remember to add the extension (.txt)"
-		file =  raw_input('> ')
-
-		if not exists(file):
-			print "File doesn't exist. Creating..."
-			data = open(file, 'w+')
-
-			print "Saving your info..."
-			data.write(info)
-
-			print "Done."
-		else:
-			data = open(file, 'w+')
-
-			print "Saving your info..."
-			data.write(info)
-
-			print "Done."
-	else:
-		print "Type 'Y' for yes, 'N' for no."
-		store_info()
-
-store_info()
+data_parser(data_retriever())

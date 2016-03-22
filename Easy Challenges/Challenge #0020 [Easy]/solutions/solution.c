@@ -77,6 +77,7 @@ static void print_primes(int min, int max){
         for ( j = 2 * i; j <= max; j += i)
             composite_numbers[j] = NON_PRIME;
     }
+    free(composite_numbers);
 }
 
 static void usage(void){
