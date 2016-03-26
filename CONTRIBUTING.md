@@ -10,6 +10,7 @@ Here are some of the known issues with the repository that you could potentially
 - Missing Challenges
 - Inconsistency between title formatting i.e. `[hard] vs [Hard] vs [Difficult]`, ordering of words, lowercase vs uppercase letters, etc (take a look at the challenge names to see the inconsistencies)
 - Missing selftext for some challenge titles (Issue #4)
+- Missing standard input file required to run challenge (often linked in challenge text)
 
 #### Naming Format
 

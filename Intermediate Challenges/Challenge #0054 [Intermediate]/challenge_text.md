@@ -14,6 +14,6 @@ You: "I can't believe I successfully connected!"
 Alice: "Isn't it cool?"       
 You: "It really is!"        
 
-If you don't have to computers lying around, or just want to make it easier for yourself, it is perfectly allowed to run both programs on the same computer and connect to "localhost". 
+If you don't have two computers lying around, or just want to make it easier for yourself, it is perfectly allowed to run both programs on the same computer and connect to "localhost". 
 
 If you want to, you can design a very simple GUI for this, but that is not necessary. If you can finagle this to work in a terminal, that is perfectly fine. 

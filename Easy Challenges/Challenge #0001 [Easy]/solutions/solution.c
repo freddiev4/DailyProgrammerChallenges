@@ -19,6 +19,7 @@ int main(void) {
 	FILE* file = fopen("info.txt", "w");
 	if (!file) {
 		perror("Unable to open the file");
+		exit(EXIT_FAILURE); /* so that you don't try to use the null ptr */
 	}
 
 	fprintf(file, "%s %d %s", user.name, user.age, user.username);
