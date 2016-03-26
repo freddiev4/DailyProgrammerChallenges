@@ -56,14 +56,17 @@ int main(int argc, char **argv){
     }
 
     if (optind < argc) {
+        int i;
         int number;
-        if (sscanf(argv[optind], "%d", &number)) {
-            print_number(number);
-            puts("");
-        }
-        else {
-            fprintf(stderr, "Invalid number: %s\n", argv[optind]);
-            exit(EXIT_FAILURE);
+        for ( i = optind; i < argc; i++) {
+            if (sscanf(argv[i], "%d", &number)) {
+                print_number(number);
+                puts("");
+            }
+            else {
+                fprintf(stderr, "Invalid number: %s\n", argv[optind]);
+                exit(EXIT_FAILURE);
+            }
         }
     }
     else {
@@ -168,7 +171,7 @@ static char *read_line(void){
     
     while ( ( c = getchar() ) != EOF && c != '\n' ) {
         if ( i >= length ) {
-            char *tmp = realloc(line, length + BUFF_SIZE);
+            char *tmp = realloc(line, length + BUFF_SIZE + 1);
 
             if (tmp == NULL) {
                 free(line);
@@ -195,6 +198,8 @@ static char *read_line(void){
 static void usage(void){
     printf("Usage %s [OPTION]... [number...]\n", invoc_name);
     printf("Convert Arabic numberals to English words.\n");
+    printf("Will use the numbers given as arguments or, alternatively,\n"
+           "read numbers from stdin.\n");
     puts("");
     puts("Options:");
     printf(" -h, --help        print this help and exit.\n");
