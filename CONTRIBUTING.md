@@ -51,8 +51,24 @@ solution2.py
 solutionX.py
 ```
 
+#### Author Credit & Descriptions
+
 If you want your name, reddit username, github handle, what have you, to be included, just add a header comment to your file
 In Python for example, you can use `""" some text """`, and in Java you can use `/* Some text here */`.
+
+Also, if you can, please include a description of your solution so that users can understand your approach, and either take their own unique approach, or compare theirs to yours.
+
+**Example:**
+
+```
+/***************************
+ * Author: Tyler Nivin
+ *
+ * Description: A short description 
+ * Long Description: See above example.
+ * Last Modified: Sun Oct 04, 2015  03:45PM
+ **************************/
+```
 
 ---------------------
 
