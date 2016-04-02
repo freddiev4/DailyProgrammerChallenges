@@ -9,6 +9,7 @@ Here are some of the known issues with the repository that you could potentially
 
 - Missing Challenges
 - Inconsistency between title formatting i.e. `[hard] vs [Hard] vs [Difficult]`, ordering of words, lowercase vs uppercase letters, etc (take a look at the challenge names to see the inconsistencies)
+    -   This has been largely handled, but feel free to update anything that was missed.
 - Missing selftext for some challenge titles (Issue #4)
 - Missing standard input file required to run challenge (often linked in challenge text)
 
@@ -16,14 +17,14 @@ Here are some of the known issues with the repository that you could potentially
 
 Please use the following name format when creating a challenge directory:
 
-`Challenge #xxxx [Easy/Intermediate/Hard] Challenge Name`
+`Challenge xxxx Easy/Intermediate/Hard - Challenge Name`
 
 Example:
 
 ```
-Challenge #0251 [Hard] ASCII Nonogram
-Challenge #0254 [Intermediate] Finding Legal Reversi Moves
-Challenge #0253 [Easy] Unconditional Loan Income
+Challenge 0251 Hard - ASCII Nonogram
+Challenge 0254 Intermediate - Finding Legal Reversi Moves
+Challenge 0253 Easy - Unconditional Loan Income
 ```
 
 ## Solutions
@@ -50,8 +51,24 @@ solution2.py
 solutionX.py
 ```
 
+#### Author Credit & Descriptions
+
 If you want your name, reddit username, github handle, what have you, to be included, just add a header comment to your file
 In Python for example, you can use `""" some text """`, and in Java you can use `/* Some text here */`.
+
+Also, if you can, please include a description of your solution so that users can understand your approach, and either take their own unique approach, or compare theirs to yours.
+
+**Example:**
+
+```
+/***************************
+ * Author: Tyler Nivin
+ *
+ * Description: A short description 
+ * Long Description: See above example.
+ * Last Modified: Sun Oct 04, 2015  03:45PM
+ **************************/
+```
 
 ---------------------
 
@@ -63,5 +80,6 @@ If you've done any of the above tasks, fork the repo, make your changes and subm
 - [Subhra S. Sarkar](https://github.com/rurtle)
 - [Austin W. Smith](https://github.com/AssailantLF)
 - [Ibar Romay](https://github.com/rowmatrix)
-- - [Jacob Herrington](https://github.com/jacob-on-github)
+- [Jacob Herrington](https://github.com/jacob-on-github)
 - [Ryan Plant](https://github.com/ryanplant-au)
+- [Tyler Nivin](https://github.com/twn346)

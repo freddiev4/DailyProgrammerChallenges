@@ -40,7 +40,7 @@ def get_current_week():
 	title_lst = []
 	for title in challenge_titles:
 		t = re.sub(r'\[([0-9\-]+)\]', '', title) # removes datestamp
-		t = re.sub(r'[<>:\"\\\/|?*]', '', title) # removes reserved chars
+	#	t = re.sub(r'[<>:\"\\\/|?*]', '', title) # removes reserved chars
 		title_lst.append(t.lstrip())
 	pprint(title_lst)
 
@@ -57,7 +57,7 @@ def get_current_week():
 		os.system('mv solutions "{}"'.format(title_lst[i]))
 
 	os.system("./movedirs.sh")
-	os.system("./send-data.sh")
+	#os.system("./send-data.sh")
 
 
 def get_all_submissions():
