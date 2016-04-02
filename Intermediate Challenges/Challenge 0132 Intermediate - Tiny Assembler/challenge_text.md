@@ -24,7 +24,7 @@ The following are all mnemonics and associated op-codes for the Tiny machine. No
 |	2. Memory	|	MOV a b	|	2 Ops, 3 bytes:	|	M[a] = M[b], or the literal-set M[a] = b	|
 |		|		|	0x07 [a] [b]	|		|
 |		|		|	0x08 [a] b	|		|
-|	3. Math	|	RANDOM a	|	2 Ops, 2 bytes:	|	M[a] = random value (0 to 25; equal probability distribution)	|
+|	3. Math	|	RANDOM a	|	1 Ops, 2 bytes:	|	M[a] = random value (0 to 25; equal probability distribution)	|
 |		|		|	0x09 [a]	|		|
 |		|	ADD a b	|	2 Ops, 3 bytes:	|	M[a] = M[a] + b; no overflow support	|
 |		|		|	0x0a [a] [b]	|		|
@@ -58,9 +58,9 @@ The following are all mnemonics and associated op-codes for the Tiny machine. No
 |		|	HALT	|	1 Op, 1 byte:	|	Halts the program / freeze flow of execution	|
 |		|		|	0xff	|		|
 |	5. Utilities	|	APRINT a	|	4 Ops, 2 byte:	|	Print the contents of M[a] in either ASCII (if using APRINT) or as decimal (if using DPRINT). Memory ref or literals are supported in both instructions.	|
-|		|	DPRINT a	|	0x20 [a] (as ASCII; aprint)	|		|
+|		|	DPRINT a	|	0x20 \[a\] (as ASCII; aprint)	|		|
 |		|		|	0x21 a (as ASCII)	|		|
-|		|		|	0x22 [a] (as Decimal; dprint)	|		|
+|		|		|	0x22 \[a\] (as Decimal; dprint)	|		|
 |		|		|	0x23 a (as Decimal)	|		|
 
 
