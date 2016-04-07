@@ -1,45 +1,57 @@
 #!/usr/bin/env python3
 
 """
-Author: Tyler Nivin (github.com/twn346)
+Author: Tyler Nivin
+Github: github.com/twn346
 File: transform.py
 Purpose: Used to rename directories to fit a specific naming scheme
-i.e. Challenge #0001 [Easy]
+i.e. Challenge 0001 - {challenge title}
 """
 
 import glob
 import os
-import re
-# import string
+import regex
 
-# assuming this script is in the same directory as the
-# challenges you want to rename
-
-test = glob.glob('*')
-test.remove('transform.py')
+# This script will run on the Easy Medium and Hard directories.
 
 
-def update_challenge_dir_name_hard(oldName):
+def update_challenge_dir_name(oldName, difficulty):
+    '''Update the specified challenge dirs names. Returns original name if it
+    suspects that it would fail a valid transformation.'''
 
     temp = oldName.split()
-    # location of the challenge number in the string.
-    loc = [i for i, number in enumerate(temp) if re.search('##*', number)]
 
-    # the current challenge number.
-    currNum = temp[loc[0]]
+    # Find the current challenge number.
+
+    # This will match the first number in the string.
+    # The extra stuff on either side makes sure that it will not match strings
+    # longer than the specified amount in the middle.
+    match = regex.search(r'(?<=[^\d]|^)\d{1,5}(?=[^\d]|$)', oldName)
 
     # n is the number of digits in the challenge number.
     # I will use this to know how many zeroes to enter.
-    n = len(currNum) - 1
+    if (match):
+        currNum = match.group()
+        n = len(currNum)
 
-    newNum = '#' + '0'*(4-n) + currNum[-n:]
+        # Handle challenges that have multiple iterations, such as 166b
+        if (regex.match(r'[.\S]', oldName[match.end()])):
+            newNum = ' ' + '0'*(4-n-1) + currNum[-n:]
+            newNum += oldName[match.end()] + ' '
+        else:
+            newNum = ' ' + '0'*(4-n) + currNum[-n:] + ' '
+    else:
+        return oldName
 
-    newTitle = 'Challenge ' + newNum + ' [Hard]'
+    newTitle = 'Challenge' + newNum + difficulty.capitalize()
 
     # Try to tease out the challenge name...
+    # First, remove the number we found earlier from the string...
+
     notName = [i for i, number in enumerate(temp)
-               if re.search('##*|challenge|\[hard\]|\[difficult\]',
-                            number, re.IGNORECASE)]
+               if regex.search(currNum + r'|' +
+                               r'challenge|' + difficulty,
+                               number, regex.IGNORECASE)]
 
     # I squashed several "single" filters down to one OR'd filter.
     # This is the syntax for the "single" filters.
@@ -52,7 +64,7 @@ def update_challenge_dir_name_hard(oldName):
         i += 1
 
     if len(temp) > 0:
-        challengeName = " " + " ".join(temp)
+        challengeName = " - " + " ".join(temp)
     else:
         challengeName = ""
 
@@ -60,50 +72,28 @@ def update_challenge_dir_name_hard(oldName):
     return newTitle
 
 
-def update_challenge_dir_name_intermediate(oldName):
+def main():
 
-    # print('DEBUG: ' + oldName)
-    temp = oldName.split()
-    # location of the challenge number in the string.
-    loc = [i for i, number in enumerate(temp) if re.search('##*', number)]
+    levels = ['easy', 'intermediate', 'hard']
 
-    # the current challenge number.
-    currNum = temp[loc[0]]
+    for level in levels:
+        rawChallengeNames = glob.glob(level + ' Challenges/*')
 
-    # n is the number of digits in the challenge number.
-    # I will use this to know how many zeroes to enter.
-    n = len(currNum) - 1
+        numCharsToRemove = len(level + ' Challenges/')
 
-    newNum = '#' + '0'*(4-n) + currNum[-n:]
+        # remove the directory from the name
+        challengeNames = list(map(lambda x: x[numCharsToRemove:],
+                                  rawChallengeNames))
 
-    newTitle = 'Challenge ' + newNum + ' [Intermediate]'
+        parent_dir = level.capitalize() + ' Challenges/'
 
-    # Try to tease out the challenge name...
+        for each in challengeNames:
+            if each != update_challenge_dir_name(each, level):
+                os.renames(parent_dir + each,
+                           parent_dir + update_challenge_dir_name(each, level))
+                # print(each + ' <::> ' + update_challenge_dir_name(each, level))
+        print(level.capitalize() + ' Challenges!')
+    return
 
-    notName = [i for i, number in enumerate(temp)
-               if re.search('##*|challenge|\[intermediate\]|\[medium\]',
-                            number, re.IGNORECASE)]
-
-    # I squashed several "single" filters down to one OR'd filter.
-    # This is the syntax for the "single" filters.
-    # notName += [i for i, number in enumerate(temp)
-    #             if re.search('challenge', number, re.IGNORECASE)]
-
-    i = 0
-    for curr in notName:
-        temp.pop(curr - i)
-        i += 1
-
-    if len(temp) > 0:
-        challengeName = " " + " ".join(temp)
-    else:
-        challengeName = ""
-
-    newTitle = newTitle + challengeName
-    return newTitle
-
-#
-for each in test:
-    if each != update_challenge_dir_name_intermediate(each):
-        # os.rename(each, update_challenge_dir_name_intermediate(each))
-        print(update_challenge_dir_name_intermediate(each))
+if __name__ == '__main__':
+    main()
