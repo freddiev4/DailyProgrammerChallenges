@@ -5,7 +5,7 @@ Author: Tyler Nivin
 Github: github.com/twn346
 File: transform.py
 Purpose: Used to rename directories to fit a specific naming scheme
-i.e. Challenge 0001: {challenge title}
+i.e. Challenge 0001 - {challenge title}
 """
 
 import glob
