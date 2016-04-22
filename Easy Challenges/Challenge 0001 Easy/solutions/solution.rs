@@ -4,7 +4,12 @@
 // to see how rust works with reading strings, remove the unwrap calls
 // and see what happens
 
-use std::io::{self,BufRead};
+// oz123 <Oz N Tiram>
+use std::error::Error;
+use std::io;
+use std::io::prelude::*;
+use std::fs::File;
+use std::path::Path;
 
 fn main() {
     let mut name = String::new();
@@ -17,11 +22,29 @@ fn main() {
     let mut username = String::new();
     println!("What is your reddit username?");
     stdin.lock().read_line(&mut username).unwrap();
-    match age.trim_right().parse::<u32>() {
-     Ok(age_i) =>
-    	println!("your name is {}, you are {:?} years old, and your username is {}", name.trim_right(), age_i, username.trim_right()),
-     // Err(_) => {},
-     Err(_) => println!("Could not understand your age..."),
-	}
-}
+    let age_i: u8 = age.trim().parse().expect("please give a number!");
 
+    let text : String = format!("your name is {}, you are {:?} years old, and your username is {}\n",
+                                name.trim_right(), age_i, username.trim_right());
+    print!("{}", text);
+
+
+    let path = Path::new("out.txt");
+    let display = path.display();
+
+    // Open a file in write-only mode, returns `io::Result<File>`
+    let mut file = match File::create(&path) {
+        Err(why) => panic!("couldn't create {}: {}",
+                           display,
+                           Error::description(&why)),
+        Ok(file) => file,
+    };
+
+    match file.write_all(text.as_bytes()) {
+        Err(why) => {
+            panic!("couldn't write to {}: {}", display,
+                                               Error::description(&why))
+        },
+        Ok(_) => println!("successfully wrote to {}", display),
+    };
+}
