@@ -2,6 +2,7 @@
  * Author	Subhra S. Sarkar
  * GitHub	https://github.com/rurtle
  * Description	Prints permutations of a given string
+ * Credits	http://goo.gl/aIwIk
  */
 
 #include <stdio.h>
