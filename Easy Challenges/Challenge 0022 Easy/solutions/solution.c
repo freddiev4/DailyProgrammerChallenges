@@ -48,6 +48,18 @@ void add_element(int id, int value)
 }
 
 /*
+ * @brief	Free all the allocated memory
+ */
+void free_all(void)
+{
+	struct my_struct *curr, *tmp;
+	HASH_ITER(hh, users, curr, tmp) {
+		HASH_DEL(users, curr);		/* delete it (users advances to next) */
+		free(curr);
+	}
+}
+
+/*
  * @brief	Prints the list of keys present in the hash table
  */
 void print_list(void)
@@ -82,6 +94,9 @@ int main(int argc, char *argv[])
 
 	/* Print the union of the two lists */
 	print_list();
+
+	/* Finally, free any structures */
+	free_all();
 
 	return 0;
 }
