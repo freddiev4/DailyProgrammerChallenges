@@ -1,8 +1,11 @@
+<<<<<<< HEAD
+=======
 # @Author: Ouss4
 # @Github : github.com/Ouss4
 # @Date: 29/04/2016
 # @Description: Solution to Easy #261.
 
+>>>>>>> master
 from math import sqrt
 
 def getLines(square, N):

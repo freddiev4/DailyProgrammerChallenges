@@ -77,7 +77,7 @@ def main():
     levels = ['easy', 'intermediate', 'hard']
 
     for level in levels:
-        rawChallengeNames = glob.glob(level + ' Challenges/*')
+        rawChallengeNames = glob.glob(os.path.join(level + ' Challenges/*'))
 
         numCharsToRemove = len(level + ' Challenges/')
 
@@ -91,7 +91,7 @@ def main():
             if each != update_challenge_dir_name(each, level):
                 os.renames(parent_dir + each,
                            parent_dir + update_challenge_dir_name(each, level))
-                # print(each + ' <::> ' + update_challenge_dir_name(each, level))
+               #  print(each + ' <::> ' + update_challenge_dir_name(each, level))
         print(level.capitalize() + ' Challenges!')
     return
 
