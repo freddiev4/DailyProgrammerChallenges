@@ -1,6 +1,6 @@
 # DailyProgrammerChallenges
 
-This repo contains all of the challenges from [**r/dailyprogrammer**](http://reddit.com/r/dailyprogrammer) and also scripts used to pull challenges from the subreddit 3 times per week and to cleanup directories & remove unnecessary posts
+This repo contains all of the challenges from [**r/dailyprogrammer**](http://reddit.com/r/dailyprogrammer) and also scripts used to pull challenges from the subreddit 3 times per week and to cleanup directories & remove unnecessary posts.
 
 The [**post-challenges.py**](https://github.com/FreddieV4/DailyProgrammerChallenges/blob/master/post-challenges.py) script is ran via a cron job on a VPS at the end of each Monday, Wednesday, and Friday, and then automatically pushes that day's challenge to this repository. The script is pretty inefficient, but it gets the job done. If you see ways to improve it, feel free to submit a pull request and add your name as a contributor.
 
