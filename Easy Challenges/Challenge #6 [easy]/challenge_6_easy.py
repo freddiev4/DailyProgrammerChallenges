@@ -1,9 +1,3 @@
-import string
-import random
-
-PASSWORD = "password"
-
-
 def main():
     """Main program
     """
